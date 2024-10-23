@@ -8,11 +8,11 @@ const Network = () => {
   const { setDpath, setStage, currentIndex, setWalletType } = useContext(WalletContext)
 
 
-  function setBtcPath() {
-    setDpath(`m/44/501/${currentIndex}/0`)
-    setWalletType('btc')
-    setStage(3)
-  }
+  // function setBtcPath() {
+  //   setDpath(`m/44/501/${currentIndex}/0`)
+  //   setWalletType('btc')
+  //   setStage(3)
+  // }
   function setEthPath() {
     setDpath(`m/44/60/${currentIndex}/0`)
     setWalletType('eth')

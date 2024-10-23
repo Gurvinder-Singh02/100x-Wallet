@@ -11,7 +11,7 @@ function Footer() {
 
     return (
         <footer className="fixed  bottom-0  left-1/2 -translate-x-1/2 f ">
-            <p className='f gap-2' >&copy; made with <img
+            <div className='f p gap-2 opacity-45' >&copy; made with <img
                 src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Beating%20Heart.png"
                 alt="Beating Heart" width="15" height="15" />
                 By <a href="https://gxuri.in" target="_blank">
@@ -20,7 +20,7 @@ function Footer() {
                 <a href="https://github.com/Gurvinder-Singh02" target="_blank">
                     <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Logo" width="14px" />
                 </a>
-            </p>
+            </div>
 
         </footer>
     )

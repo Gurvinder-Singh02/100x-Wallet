@@ -61,7 +61,7 @@ function CardSOL({ setError }) {
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: 'https://api.devnet.solana.com',
+                url: import.meta.env.VITE_RPC_SOL_URL,
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -69,6 +69,7 @@ function CardSOL({ setError }) {
             };
 
             try {
+
                 const response = await axios.request(config);
                 console.log(response.data.result.value)
                 setBalance(response.data.result.value / 1000000000);  // Store the balance in state
@@ -102,6 +103,7 @@ function CardSOL({ setError }) {
             method: 'post',
             maxBodyLength: Infinity,
             url: 'https://api.devnet.solana.com',
+            // url: import.meta.env.RPC_SOL_URL,
             headers: {
                 'Content-Type': 'application/json'
             },

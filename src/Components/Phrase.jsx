@@ -22,6 +22,7 @@ const Phrase = () => {
 
 
     function newMnemonic() {
+        alert('')
         setmnemonic(generateMnemonic())
     }
 
@@ -107,8 +108,8 @@ const Phrase = () => {
                     {!loading && <div className=" bg-white rounded-full p-3 text-white "> <img src="/arrow.svg" /></div>}
                     {loading && <div className=" bg-black animate-spin rounded-full p-3 text-white "> <img src="/repeat.svg" /></div>}
 
-                </button >
-            </div >
+                </button>
+            </div>
         </>
     )
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext } from 'react'
 import { WalletContext } from '../Provider/Wrap'
 
@@ -67,7 +68,7 @@ function Desc5({ title, p }) {
         return null
     }
     return (
-        <div className={`absolute opacity-45 bottom-9  ${p} `} >
+        <div className={`absolute opacity-45 bg-red-300   ${p} `} >
             <p className="opacity-100 my-2 pl-12" >{title} </p>
             <img src="/Line.svg" alt="" width={50} className="scale-y-[-1] scale-x-[-1] rotate-90 " />
         </div>

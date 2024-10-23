@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { WalletContext } from "../Provider/Wrap"
 
+// eslint-disable-next-line react/prop-types
 const Next = ({ goto }) => {
 
   const { setStage } = useContext(WalletContext)
