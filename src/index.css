@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Space Grotesk";
+  overflow: hidden;
+}
+
+h1 {
+  @apply text-[51px] -tracking-[0.2rem] leading-[3rem] text-center;
+}
+main {
+  @apply h-screen w-screen bg-[url('./assets/bg.png')] bg-center;
+}
+
+.f {
+  @apply flex justify-center items-center;
+}
+.fb {
+  @apply flex justify-between items-center;
+}
+.fc {
+  @apply flex justify-center items-center flex-col;
+}
+
+.circle {
+  background-color: #f2f2f2;
+  @apply rounded-full p-3;
+}
+.circle2 {
+  background-color: #f2f2f2;
+  @apply rounded-full;
+  border: 1px solid rgb(224, 224, 224);
+}
+.circle3 {
+  @apply rounded-full;
+  border: 1px solid rgb(224, 224, 224);
+}
+
+.bg3 {
+  background-color: #f2f2f2;
+  border: 1px solid rgb(224, 224, 224);
+}
+
+.bg {
+  background-color: #fff;
+  box-shadow: 10px 4px 58px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(224, 224, 224);
+  @apply rounded-full p-2;
+}
+.bg2 {
+  background-color: #fff;
+  box-shadow: 10px 4px 58px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(224, 224, 224);
+  @apply rounded-3xl p-2;
+}
+.bg3 {
+  background-color: #fff;
+  border: 1px solid rgb(224, 224, 224);
+  box-shadow: 10px 4px 58px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  @apply border-none w-52 mx-3;
+}
+
+textarea {
+  @apply border-none w-96 min-h-8 mx-3;
+}
+
+input,
+textarea[type="text"]:focus {
+  outline: 0 solid orange; /* oranges! yey */
+}
+h3 {
+  @apply text-[24px];
+}
+h5 {
+  @apply text-[20px] font-semibold;
+}
+h2 {
+  @apply text-[18px] font-semibold;
+}
+p,
+label {
+  @apply text-sm opacity-50;
+}
+
+.card {
+  @apply p-2;
+}
+
+.custom-checkbox {
+  width: 38px; /* Equivalent to w-8 */
+  height: 38px; /* Equivalent to h-8 */
+  appearance: none; /* Remove default styling */
+  background-color: #e1ff01; /* Set background color */
+  border-radius: 8px; /* Optional: for rounded corners */
+  cursor: pointer;
+}
+
+/* Style the checkmark when checkbox is checked */
+.custom-checkbox:checked {
+  background-color: #e1ff01; /* Keep background color */
+  position: relative;
+  @apply f p-4;
+}
+
+/* Show the checkmark when checked */
+.custom-checkbox:checked::after {
+  content: url("/tick.svg"); /* Checkmark symbol */
+  color: black; /* Color of the checkmark */
+  position: absolute;
+  top: 11px;
+}
+
+.word {
+  border: 1px solid rgb(224, 224, 224);
+  box-shadow: 10px 4px 58px rgba(0, 0, 0, 0.1);
+  @apply px-5  py-1.5 m-2 border  rounded-full;
+}
+
+.hel {
+  font-family: Space Grotesk;
+  @apply tracking-normal;
+}
+
+.btn-n {
+  @apply px-8 py-2 bg-[#e1ff01] rounded-full;
+}
+.btn-n {
+  @apply px-8 py-2 bg-[#f2f2f2] rounded-full;
+}
+.fourth button:nth-last-child(1) {
+  @apply p-7 bg-[#f2f2f2]  rounded-full;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.badge button {
+  @apply px-6 py-2 w-full rounded-full;
+}
+.bg-n {
+  background: #e1ff01;
+}
+
+button {
+  transition: all 0.1s ease-in-out;
+}
+
+button:hover {
+  @apply scale-105;
+}
+.wallet {
+  transition: all 0.1s ease-in-out;
+}
+
+.wallet:hover {
+  @apply scale-95 n;
+}
+
+.help {
+  @apply bg3 py-2 px-4 rounded-full absolute top-[4rem] right-10 z-10 ;
+}
+.help2 {
+  @apply bg3 py-2 px-4 rounded-full absolute bottom-5 left-7;
+}
+
+.btn {
+  @apply px-8 py-5 bg-[#f2f2f2] rounded-full;
+}
+
+.btn-img {
+  @apply p-5 bg-[#f2f2f2] rounded-full;
+}
+.btn-img-n {
+  @apply bg-[#f2f2f2] rounded-full;
+}
+.btn-img2 {
+  @apply p-4 w-14 h-14 f bg-black rounded-full;
+}
+
+.n {
+  @apply bg-[#e1ff01];
+}
