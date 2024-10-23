@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { generateMnemonic, mnemonicToSeedSync } from "bip39"
 import { useState } from "react"
 import { useContext } from "react"
@@ -10,7 +11,7 @@ import nacl from "tweetnacl"
 
 const Phrase = () => {
 
-    const { setStage, dPath, currentIndex, setCurrentIndex, publicKeys, setPublicKeys, addresses, setAddresses, mnemonic, setmnemonic, currentIndexEth, setCurrentIndexEth, walletType, setWalletType } = useContext(WalletContext)
+    const { setStage, dPath, currentIndex, setCurrentIndex, setPublicKeys, addresses, setAddresses, mnemonic, setmnemonic, currentIndexEth, setCurrentIndexEth, walletType, setWalletType } = useContext(WalletContext)
 
     const [loading, setLoading] = useState(false)
 
