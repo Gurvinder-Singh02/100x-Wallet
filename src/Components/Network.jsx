@@ -36,7 +36,7 @@ const Network = () => {
           <button onClick={setSolPath} >
             <Card name="Solana" amount={125.35} img="/sol.svg" />
           </button>
-          <button onClick={setBtcPath} >
+          <button onClick={setSolPath} >
             <Card name="Bitcoin" amount={67759.35} img="/btv.svg" />
           </button>
           <button onClick={setEthPath} >

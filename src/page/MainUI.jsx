@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Desc, Desc2, Desc3 } from "../Components/Desc"
 import { WalletContext } from "../Provider/Wrap"
@@ -6,7 +6,6 @@ import { Keypair } from "@solana/web3.js";
 import { PublicKey } from '@solana/web3.js';
 import { Wallet, HDNodeWallet } from "ethers";
 
-import { useState } from "react"
 import { mnemonicToSeedSync } from "bip39"
 import { useContext } from "react"
 import { derivePath } from "ed25519-hd-key";
@@ -95,7 +94,7 @@ const TopCard = () => {
   }
 
   function gotoMnemonic() {
-    setStage(6)
+    setStage(4)
   }
 
   return (

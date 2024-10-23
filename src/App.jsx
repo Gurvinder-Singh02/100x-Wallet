@@ -9,7 +9,7 @@ import { useCookies } from 'react-cookie'
 
 import { WalletContext } from './Provider/Wrap'
 import ImportPhrase from './Components/ImportPhrase'
-import { Desc2, Desc3, } from './Components/Desc'
+import { Desc, Desc2, Desc3, Desc4, } from './Components/Desc'
 import Badge from './Components/Badge'
 import MainUI from './page/MainUI'
 import Footer from './Components/footer'
@@ -21,7 +21,7 @@ function App() {
   const [cookies, setCookie] = useCookies(['user'])
 
   useEffect(function () {
-    
+
 
     setStage(cookies.stage || 0)
     setPublicKeys(cookies.public || [])
@@ -48,6 +48,9 @@ function App() {
   function toggleHelp() {
     SetHelp(!help)
   }
+  function toggleHome() {
+    setStage(5)
+  }
   function toggleDelete() {
     setStage(0)
     setPublicKeys([])
@@ -57,13 +60,14 @@ function App() {
     setStage(0)
   }
 
-  
+
 
   return (
 
     <main className='fc relative' >
       <Badge />
-      <button onClick={toggleHelp} className='help  ' >?  <Desc3 title="Loooking annoying Toggle Off here" p="-top-[3rem] -left-[18rem] " /> </button>
+      <button onClick={toggleHelp} className='help   ' >  <span className='' >?</span> <Desc3 title="Loooking annoying Toggle Off here" p="-top-[3rem] -left-[18rem] " /> </button>
+      <button onClick={toggleHome} className='help3 ' > <img src="/home.svg" alt="" srcSet="" width={20} className='' /> </button> <Desc title="Skip All and go Home " p="top-[7rem] left-[7rem] " />
       <button onClick={toggleDelete} className='help2  ' >X <Desc2 title="Start Fresh" p="-top-[4rem] -right-[8rem] " /> </button>
       {stage == 0 && <Title text1="Welcome to The Secure AF " text2="100x Wallet" />}
       {stage == 1 && <Title text1="A Promise Of Security And Transparency  " text2="For Everyone" />}

@@ -163,10 +163,13 @@ button:hover {
 }
 
 .help {
-  @apply bg3 py-2 px-4 rounded-full absolute top-[4rem] right-10 z-10 ;
+  @apply bg3 py-2 px-4 rounded-full absolute top-[4rem] right-10 z-10;
 }
 .help2 {
   @apply bg3 py-2 px-4 rounded-full absolute bottom-5 left-7;
+}
+.help3 {
+  @apply bg3 py-4 px-4 rounded-full absolute left-10 top-[4rem]  ;
 }
 
 .btn {
@@ -185,4 +188,7 @@ button:hover {
 
 .n {
   @apply bg-[#e1ff01];
+}
+.b {
+  @apply bg-[#000];
 }

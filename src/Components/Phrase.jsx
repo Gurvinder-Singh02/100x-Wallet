@@ -3,11 +3,12 @@ import { generateMnemonic, mnemonicToSeedSync } from "bip39"
 import { useState } from "react"
 import { useContext } from "react"
 import { WalletContext } from "../Provider/Wrap"
-import { Desc, Desc3 } from "./Desc"
+import { Desc, Desc2, Desc3, Desc4, Desc5 } from "./Desc"
 import { derivePath } from "ed25519-hd-key";
 import { Keypair } from "@solana/web3.js";
 import { Wallet, HDNodeWallet } from "ethers";
 import nacl from "tweetnacl"
+import ImportPhrase from "./ImportPhrase"
 
 const Phrase = () => {
 
@@ -18,6 +19,7 @@ const Phrase = () => {
     function copyToClipBoard() {
         navigator.clipboard.writeText(mnemonic);
     }
+
 
     function newMnemonic() {
         setmnemonic(generateMnemonic())
@@ -64,19 +66,25 @@ const Phrase = () => {
         setmnemonic(generateMnemonic())
 
     }
+    function gotoImport() {
+        setStage(6)
+    }
 
     return (
         <>
-
             <div className='bg2 w-[480px]  relative  ' >
                 <div className="top fb m-4 ">
                     <div className="left f gap-3  ">
-                        <button onClick={copyToClipBoard} className="circle2 p-4 "><img src="/cpy.svg" alt="" srcSet="" /></button>
+                        <button onClick={copyToClipBoard} className="bg3 rounded-xl p-4 "><img src="/cpy.svg" alt="" srcSet="" /></button>
+
                         <div className="text">
                             <h5>Latest Mnemonic Phrase</h5>
                             <p>Click Anywhere to copy</p>
                         </div>
                     </div>
+                    <button onClick={gotoImport} className=" bg3 p-4 rounded-full ">
+                        <img src="/settings.svg" alt="" />
+                    </button>
                     <button onClick={newMnemonic} className=" bg-black p-4 rounded-full ">
                         <img src="/repeat.svg" alt="" />
                     </button>
@@ -86,6 +94,7 @@ const Phrase = () => {
                         <button key={index} className='word' >{item}</button>
                     ))}
                 </div>
+                <Desc5 title="Already have a mnemonic ? click here" p="-right-[12rem] -top-[6rem] " />
                 <Desc title="Create New Random mnemonic here " p="-right-[18rem] top-[3rem] " />
                 <Desc3 title="Click Any wher to copy to Clipboard " p="-left-[18rem] top-[9rem] " />
 

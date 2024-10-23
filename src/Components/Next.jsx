@@ -11,6 +11,7 @@ const Next = ({ goto }) => {
       setStage(goto)
     }
     else {
+
       setStage(x => x + 1)
     }
   }

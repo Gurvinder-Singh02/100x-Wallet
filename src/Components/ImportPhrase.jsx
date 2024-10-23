@@ -23,7 +23,7 @@ const ImportPhrase = () => {
 
     return (
         <>
-            <div className="f gap-4 bg3 rounded-3xl p-4 relative " >
+            <div className="f gap-4 bg3 w-[480px] rounded-3xl p-4 relative " >
                 <div className="circle"><img src="/finger.svg" alt="guri" /></div>
                 <textarea rows={2} className="text-center " onKeyDown={submitPass} type="text" ref={inputRef} placeholder='Enter You 12 word mnemonic to import wallet' />
                 <Desc title="Enter 100xdev here and press Enter " p="-right-[18rem] top-[3rem] " />
