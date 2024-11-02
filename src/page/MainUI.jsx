@@ -15,9 +15,10 @@ import nacl from "tweetnacl"
 
 const MainUI = () => {
 
+  // eslint-disable-next-line no-unused-vars
   const { stage, publicKeys, addresses, mnemonic, walletType } = useContext(WalletContext)
 
-  console.log("Stage", stage, "mnemonic", mnemonic)
+  // console.log("Stage", stage, "mnemonic", mnemonic)
 
   return (
     <div>
@@ -57,51 +58,50 @@ const TopCard = () => {
   function addWallet() {
 
     if (walletType === 'sol') {
-      console.log("walletType is 'sol'");
+      // console.log("walletType is 'sol'");
 
       // Log the mnemonic
-      console.log("mnemonic", mnemonic);
+      // console.log("mnemonic", mnemonic);
 
       // Convert the mnemonic to a seed
       const seed = mnemonicToSeedSync(mnemonic);
-      console.log("Generated seed from mnemonic:", seed.toString("hex"));
+      // console.log("Generated seed from mnemonic:", seed.toString("hex"));
 
       // Derive the path for the key
       const path = `m/44'/501'/${currentIndex}'/0'`;
-      console.log("Derivation path:", path);
+      // console.log("Derivation path:", path);
 
       // Derive the seed using the specified path
       const dSeed = derivePath(path, seed.toString("hex")).key;
-      console.log("Derived seed for path:", dSeed.toString("hex"));
+      // console.log("Derived seed for path:", dSeed.toString("hex"));
 
       // Generate secret key from the derived seed
       const secret = nacl.sign.keyPair.fromSeed(dSeed).secretKey;
-      console.log("Generated secret key:", secret);
+      // console.log("Generated secret key:", secret);
 
       // Generate keypair from the secret key
       const keypair = Keypair.fromSecretKey(secret);
-      console.log("Generated keypair:", keypair);
+      // console.log("Generated keypair:", keypair);
 
       // Log the private key
-      console.log("Private Key (secretKey):", keypair.secretKey);
+      // console.log("Private Key (secretKey):", keypair.secretKey);
 
       // Log the public key in base58 format
-      console.log("Public Key (base58):", keypair.publicKey.toBase58());
+      // console.log("Public Key (base58):", keypair.publicKey.toBase58());
 
       // Update public keys array with the new public key
       setPublicKeys([...publicKeys, keypair.publicKey]);
-      console.log("Updated public keys array:", [...publicKeys, keypair.publicKey].map(pk => pk.toBase58()));
 
       // Log the public key after the update
-      console.log("Public key after set:", keypair.publicKey.toBase58());
+      // console.log("Public key after set:", keypair.publicKey.toBase58());
 
       // Increment the current index
       setCurrentIndex(x => x + 1);
-      console.log("Incremented current index:", currentIndex + 1);
+      // console.log("Incremented current index:", currentIndex + 1);
 
       // Set stage to 5
       setStage(5);
-      console.log("Stage set to 5");
+      // console.log("Stage set to 5");
     }
     if (walletType === 'eth') {
 
@@ -112,11 +112,11 @@ const TopCard = () => {
       const child = hdNode.derivePath(path);
 
       const privateKey = child.privateKey;
-      console.log(privateKey)
+      // console.log(privateKey)
       const wallet = new Wallet(privateKey);
 
       setAddresses([...addresses, wallet.address]);
-      console.log("eth", wallet.address)
+      // console.log("eth", wallet.address)
       setCurrentIndexEth(x => x + 1);
       setStage(5)
     }

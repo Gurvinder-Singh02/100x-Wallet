@@ -8,7 +8,6 @@ import { derivePath } from "ed25519-hd-key";
 import { Keypair } from "@solana/web3.js";
 import { Wallet, HDNodeWallet } from "ethers";
 import nacl from "tweetnacl"
-import ImportPhrase from "./ImportPhrase"
 
 const Phrase = () => {
 
@@ -22,13 +21,13 @@ const Phrase = () => {
 
 
     function newMnemonic() {
-        alert('')
         setmnemonic(generateMnemonic())
     }
 
     function nextStage() {
 
         console.log(currentIndex, currentIndexEth)
+        
         if (walletType === 'sol') {
             const seed = mnemonicToSeedSync(mnemonic)
             const path = `m/44'/501'/${currentIndex}'/0'`;

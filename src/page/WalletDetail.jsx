@@ -112,8 +112,8 @@ function CardSOL({ setError }) {
 
         try {
             await delay(1000);
-            let res = await axios.request(config)
-            await delay(2000);
+            await axios.request(config)
+            await delay(1000);
             setError('Airdrop Sucess . Please Refresh it may take some time to refetch .');
         }
         catch (e) {
