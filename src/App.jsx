@@ -49,7 +49,8 @@ function App() {
     SetHelp(!help)
   }
   function toggleHome() {
-    setStage(5)
+    // setStage(5)
+    console.log('Not availble yet')
   }
   function toggleDelete() {
     setStage(0)
