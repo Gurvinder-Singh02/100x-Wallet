@@ -1,0 +1,1 @@
+console.log("vars", import.meta.env)

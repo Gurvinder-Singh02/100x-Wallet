@@ -46,6 +46,7 @@ function CardSOL({ setError }) {
     const [balance, setBalance] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    console.log("ENV",import.meta.env.VITE_RPC_SOL_URL)
 
     useEffect(() => {
         const fetchData = async () => {
