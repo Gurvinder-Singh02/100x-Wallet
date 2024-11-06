@@ -19,6 +19,7 @@ const MainUI = () => {
   const { stage, publicKeys, addresses, mnemonic, walletType } = useContext(WalletContext)
 
   // console.log("Stage", stage, "mnemonic", mnemonic)
+  console.log("in the mian ui ", publicKeys)
 
   return (
     <div>
@@ -27,8 +28,10 @@ const MainUI = () => {
         <Headline />
         <div className="flex flex-col gap-2 h-[280px] overflow-x-visible overflow-y-scroll   ">
 
+
+
           {walletType === 'sol' && publicKeys.map((item, index) => {
-            const publicKey = new PublicKey(item);
+            const publicKey = new PublicKey(item?.pubKey);
             return (
               <Card key={index} name={"Solana " + (index + 1)} type="sol" index={index + 1} amount={publicKey.toBase58()} img="/sol.svg" />
             )
@@ -53,55 +56,30 @@ const MainUI = () => {
 
 const TopCard = () => {
 
-  const { setStage, currentIndex, setCurrentIndex, addresses, setAddresses, currentIndexEth, setCurrentIndexEth, publicKeys, setPublicKeys, mnemonic, walletType } = useContext(WalletContext)
+  const { setStage, currentIndex, clusterMain, setClusterMain, setCurrentIndex, addresses, setAddresses, currentIndexEth, setCurrentIndexEth, publicKeys, setPublicKeys, mnemonic, walletType } = useContext(WalletContext)
 
   function addWallet() {
 
     if (walletType === 'sol') {
-      // console.log("walletType is 'sol'");
 
-      // Log the mnemonic
-      // console.log("mnemonic", mnemonic);
-
-      // Convert the mnemonic to a seed
       const seed = mnemonicToSeedSync(mnemonic);
-      // console.log("Generated seed from mnemonic:", seed.toString("hex"));
 
-      // Derive the path for the key
       const path = `m/44'/501'/${currentIndex}'/0'`;
-      // console.log("Derivation path:", path);
 
-      // Derive the seed using the specified path
       const dSeed = derivePath(path, seed.toString("hex")).key;
-      // console.log("Derived seed for path:", dSeed.toString("hex"));
 
       // Generate secret key from the derived seed
       const secret = nacl.sign.keyPair.fromSeed(dSeed).secretKey;
       // console.log("Generated secret key:", secret);
 
-      // Generate keypair from the secret key
       const keypair = Keypair.fromSecretKey(secret);
-      // console.log("Generated keypair:", keypair);
 
-      // Log the private key
-      // console.log("Private Key (secretKey):", keypair.secretKey);
+      setPublicKeys([...publicKeys, { pubKey: keypair.publicKey.toBase58(), pvtKey: keypair.secretKey }]);
 
-      // Log the public key in base58 format
-      // console.log("Public Key (base58):", keypair.publicKey.toBase58());
-
-      // Update public keys array with the new public key
-      setPublicKeys([...publicKeys, keypair.publicKey]);
-
-      // Log the public key after the update
-      // console.log("Public key after set:", keypair.publicKey.toBase58());
-
-      // Increment the current index
       setCurrentIndex(x => x + 1);
-      // console.log("Incremented current index:", currentIndex + 1);
 
-      // Set stage to 5
       setStage(5);
-      // console.log("Stage set to 5");
+
     }
     if (walletType === 'eth') {
 
@@ -122,8 +100,12 @@ const TopCard = () => {
     }
   }
 
-  function addMoney() {
-    alert("1 SOl WIll be added from dev net")
+  function toDevnet() {
+    setClusterMain(false)
+  }
+
+  function toMainnet() {
+    setClusterMain(true)
   }
 
   function gotoMnemonic() {
@@ -154,13 +136,13 @@ const TopCard = () => {
       </div>
       <div className="third  mb-8 gap-2 flex items-end ">
         <h1 className="third hel font-semibold ">
-          DevNet
+          {clusterMain ? 'MainNet' : 'DevNet'}
         </h1>
         <p className="pb-1" > X RPC Server </p>
       </div>
       <div className=" flex justify-between gap-1 relative ">
-        <button className='btn n' >Send</button>
-        <button className='btn' onClick={addMoney}>Receive</button>
+        <button className={`btn ${!clusterMain && 'n'}`} onClick={toDevnet}>Devnet</button>
+        <button className={`btn ${clusterMain && 'n'}`} onClick={toMainnet}>Mainnet</button>
         <button onClick={addWallet} className="p-6 btn-img-n  " ><img src="/add.svg" alt="" />
           <Desc2 title="Add New Wallet Here" p="-right-[12.5rem]" />
         </button>
@@ -172,7 +154,6 @@ const TopCard = () => {
 
 // Headline for below Cards
 function Headline() {
-
 
 
   const { publicKeys, addresses, walletType } = useContext(WalletContext)

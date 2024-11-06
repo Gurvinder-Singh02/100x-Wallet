@@ -9,19 +9,18 @@ import { useCookies } from 'react-cookie'
 
 import { WalletContext } from './Provider/Wrap'
 import ImportPhrase from './Components/ImportPhrase'
-import { Desc, Desc2, Desc3, Desc4, } from './Components/Desc'
+import { Desc, Desc2, Desc3 } from './Components/Desc'
 import Badge from './Components/Badge'
 import MainUI from './page/MainUI'
 import Footer from './Components/footer'
 
 function App() {
 
-  const { stage, setStage, currentIndex, setCurrentIndex, publicKeys, setPublicKeys, addresses, setAddresses, help, SetHelp, currentIndexEth, setCurrentIndexEth } = useContext(WalletContext)
+  const { stage, setStage, currentIndex, setCurrentIndex, publicKeys, setLogged, setPublicKeys, addresses, setAddresses, help, SetHelp, currentIndexEth, setCurrentIndexEth } = useContext(WalletContext)
 
   const [cookies, setCookie] = useCookies(['user'])
 
   useEffect(function () {
-
 
     setStage(cookies.stage || 0)
     setPublicKeys(cookies.public || [])
@@ -29,6 +28,9 @@ function App() {
 
     setCurrentIndex(cookies.currentIndex || 0)
     setCurrentIndexEth(cookies.currentIndexEth || 0)
+
+
+
 
 
   }, [cookies.addresses, cookies.currentIndex, cookies.currentIndexEth, cookies.public, cookies.stage, setAddresses, setCurrentIndex, setCurrentIndexEth, setPublicKeys, setStage])
@@ -43,14 +45,20 @@ function App() {
     setCookie('currentIndex', currentIndex)
     setCookie('currentIndexEth', currentIndexEth)
 
+    console.log("x", stage)
+    if (currentIndex) {
+      setLogged(true)
+    }
+
+
   }, [addresses, currentIndex, currentIndexEth, publicKeys, setCookie, stage])
 
   function toggleHelp() {
     SetHelp(!help)
   }
   function toggleHome() {
-    // setStage(5)
-    console.log('Not availble yet')
+    setStage(5)
+
   }
   function toggleDelete() {
     setStage(0)
@@ -59,6 +67,7 @@ function App() {
     setCurrentIndex(0)
     setCurrentIndexEth(0)
     setStage(0)
+    setLogged(false)
   }
 
 

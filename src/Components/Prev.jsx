@@ -4,9 +4,16 @@ import { WalletContext } from "../Provider/Wrap"
 
 const Prev = () => {
 
-  const { stage, setStage } = useContext(WalletContext)
+  const { stage, logged, setStage } = useContext(WalletContext)
 
   function prevStage() {
+
+    console.log(stage)
+
+    if (logged) {
+      setStage(5)
+      return
+    }
 
     if (stage == 0) {
       return
@@ -14,8 +21,9 @@ const Prev = () => {
     if (stage == 6) {
       setStage(3)
     }
-
-    setStage(x => x - 1)
+    else {
+      setStage(x => x - 1)
+    }
   }
 
   return (
