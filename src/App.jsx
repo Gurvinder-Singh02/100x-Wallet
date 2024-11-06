@@ -70,6 +70,8 @@ function App() {
     setLogged(false)
   }
 
+  console.log("mian")
+
 
 
   return (
