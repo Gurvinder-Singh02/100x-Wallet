@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { generateMnemonic, mnemonicToSeedSync } from "bip39"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useContext } from "react"
 import { WalletContext } from "../Provider/Wrap"
 import { Desc, Desc2, Desc3, Desc4, Desc5 } from "./Desc"
@@ -27,7 +27,7 @@ const Phrase = () => {
     function nextStage() {
 
         console.log(currentIndex, currentIndexEth)
-        
+
         if (walletType === 'sol') {
             const seed = mnemonicToSeedSync(mnemonic)
             const path = `m/44'/501'/${currentIndex}'/0'`;
@@ -38,7 +38,7 @@ const Phrase = () => {
             const keypair = Keypair.fromSecretKey(secret);
             console.log("Keypair", keypair.publicKey.toBase58())
 
-            setPublicKeys([keypair.publicKey]);
+            setPublicKeys([{ pubKey: keypair.publicKey.toBase58(), pvtKey: keypair.secretKey }]);
             console.log(keypair.publicKey.toBase58())
             setCurrentIndex(x => x + 1);
             setStage(5)
@@ -61,11 +61,13 @@ const Phrase = () => {
         }
 
     }
-    if (!mnemonic) {
 
-        setmnemonic(generateMnemonic())
+    useEffect(() => {
+        if (!mnemonic) {
+            setmnemonic(generateMnemonic())
+        }
+    }, [mnemonic]);
 
-    }
     function gotoImport() {
         setStage(6)
     }

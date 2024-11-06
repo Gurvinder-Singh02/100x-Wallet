@@ -10,15 +10,15 @@ import WalletDetail from './page/WalletDetail.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
 
-    <CookiesProvider>
-      <Wrap>
+    <Wrap>
+      <CookiesProvider>
         <BrowserRouter>
           <Routes >
             <Route index element={<App />} />
             <Route path="/:id" element={<WalletDetail />} />
           </Routes>
         </BrowserRouter>
-      </Wrap>
-    </CookiesProvider>
+      </CookiesProvider>
+    </Wrap>
   </StrictMode>,
 )
