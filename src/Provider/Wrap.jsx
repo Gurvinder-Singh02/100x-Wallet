@@ -15,7 +15,7 @@ const Wrap = ({ children }) => {
     const [currentIndexEth, setCurrentIndexEth] = useState(0);
     const [publicKeys, setPublicKeys] = useState([{}]);
     const [addresses, setAddresses] = useState([]);
-    const [mnemonic, setmnemonic] = useState("")
+    const [mnemonic, setmnemonic] = useState("guri")
     const [help, SetHelp] = useState(true)
     const [walletType, setWalletType] = useState("sol")
 
