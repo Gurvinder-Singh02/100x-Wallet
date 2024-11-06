@@ -12,7 +12,7 @@ import axios from 'axios'
 import { useConnection } from "@solana/wallet-adapter-react";
 
 import {
-
+    Connection,
     Keypair,
     SystemProgram,
     LAMPORTS_PER_SOL,
@@ -68,6 +68,8 @@ function CardSOL({ setError }) {
 
     const { connection } = useConnection()
 
+
+
     useEffect(() => {
 
         setLoading(true)
@@ -117,15 +119,23 @@ function CardSOL({ setError }) {
             }),
         );
 
+        const connection = new Connection(
+            "https://api.devnet.solana.com",
+            "confirmed",
+        );
+
         try {
-            let res = await sendAndConfirmTransaction(connection, transferTransaction, [
+            setLoading(true)
+            const sign = await sendAndConfirmTransaction(connection, transferTransaction, [
                 fromKeypair,
             ]);
-
-            console.log(res)
+            console.log("signature : ", sign)
+            setError("transaction success check console for signature")
 
         } catch (error) {
             console.log("error", error)
+        } finally {
+            setLoading(false)
         }
 
     }
@@ -147,8 +157,8 @@ function CardSOL({ setError }) {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'https://api.devnet.solana.com',
-            // url: import.meta.env.RPC_SOL_URL,
+            // url: 'https://api.devnet.solana.com',
+            url: import.meta.env.RPC_SOL_URL_DEV,
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -214,7 +224,7 @@ function CardSOL({ setError }) {
                     exit={{ opacity: 0, y: -14 }}
                     transition={{ duration: 0.3 }}>
                     <input type="text" ref={toRef} className=' bg-black text-white ' placeholder='Receiver Address ' />
-                    <input type="text" ref={amtRef} className=' bg-black text-white w-1/2' placeholder='0.01' />
+                    <input type="text" ref={amtRef} className=' bg-black text-white w-1/2' placeholder='0.01' value={0.01} />
                     <div className=" text-white px-3 rounded-full" >SOL</div>
                 </motion.div>
             }
