@@ -39,7 +39,7 @@ const WalletDetail = () => {
 
     return (
         <main className='fc relative'>
-            <button onClick={toggleHelp} className='help  ' >?  <Desc3 title="Loooking annoying Toggle Off here" p="-top-[3rem] -left-[18rem] " /> </button>
+            <button onClick={toggleHelp} className='help hidden sm:flex  ' >?  <Desc3 title="Loooking annoying Toggle Off here" p="-top-[3rem] -left-[18rem] " /> </button>
             <PrevPage />
             <br /><br />
             <Title text1={WalletType === 'sol' ? `Solana Account ${index}` : `Etherium Account ${index}`} text3="Your Account is only stored on you browser" />
@@ -124,7 +124,7 @@ function CardSOL({ setError }) {
 
         try {
             setLoading(true)
-const sign = await sendAndConfirmTransaction(connection, transferTransaction, [
+            const sign = await sendAndConfirmTransaction(connection, transferTransaction, [
                 fromKeypair,
             ]);
             console.log("signature : ", sign)
@@ -134,6 +134,7 @@ const sign = await sendAndConfirmTransaction(connection, transferTransaction, [
             console.log("error", error)
         } finally {
             setLoading(false)
+            setError("transaction success check console for signature")
         }
 
     }
