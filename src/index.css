@@ -2,13 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
-  font-family: "Space Grotesk";
+  font-family: "Space Grotesk", sans-serif;
   overflow: hidden;
+  @apply scale-75 sm:scale-90 md:scale-100
 }
 
 h1 {
-  @apply text-[51px] -tracking-[0.2rem] leading-[3rem] text-center;
+  @apply text-[51px]  -tracking-[0.2rem] leading-[3rem] text-center;
 }
 main {
   @apply h-screen w-screen bg-[url('./assets/bg.png')] bg-center;

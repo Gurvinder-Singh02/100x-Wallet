@@ -78,9 +78,9 @@ function App() {
 
     <main className='fc relative' >
       <Badge />
-      <button onClick={toggleHelp} className='help   ' >  <span className='' >?</span> <Desc3 title="Loooking annoying Toggle Off here" p="-top-[3rem] -left-[18rem] " /> </button>
-      <button onClick={toggleHome} className='help3 ' > <img src="/home.svg" alt="" srcSet="" width={20} className='' /> </button> <Desc title="Skip All and go Home " p="top-[7rem] left-[7rem] " />
-      <button onClick={toggleDelete} className='help2  ' >X <Desc2 title="Start Fresh" p="-top-[4rem] -right-[8rem] " /> </button>
+      <button onClick={toggleHelp} className='help hidden md:flex    ' >  <span className='' >?</span> <Desc3 title="Loooking annoying Toggle Off here" p="-top-[3rem] -left-[18rem] " /> </button>
+      <button onClick={toggleHome} className='help3 hidden md:flex ' > <img src="/home.svg" alt="" srcSet="" width={20} className='' /> </button> <Desc title="Skip All and go Home " p="top-[7rem] left-[7rem] " />
+      <button onClick={toggleDelete} className='help2 hidden md:flex ' >X <Desc2 title="Start Fresh" p="-top-[4rem] -right-[8rem] " /> </button>
       {stage == 0 && <Title text1="Welcome to The Secure AF " text2="100x Wallet" />}
       {stage == 1 && <Title text1="A Promise Of Security And Transparency  " text2="For Everyone" />}
       {stage == 2 && <Title text1="Select You Network " text3="Selec the Preffered Netwrok you need" />}
@@ -97,7 +97,6 @@ function App() {
       {stage == 4 && <Phrase />}
       {stage == 5 && <MainUI />}
 
-      <br /><br /><br /><br /><br />
       <Footer />
     </main>
   )

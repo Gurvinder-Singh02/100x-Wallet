@@ -63,7 +63,7 @@ const Phrase = () => {
     }
 
     useEffect(() => {
-        if (!mnemonic) {
+        if (mnemonic === 'guri') {
             setmnemonic(generateMnemonic())
         }
     }, [mnemonic]);

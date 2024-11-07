@@ -108,7 +108,6 @@ function CardSOL({ setError }) {
 
         let secret = publicKeys.find((item) => item.pubKey == id)
         console.log(secret)
-
         const fromKeypair = Keypair.fromSecretKey((Uint8Array.from((Object.values(secret.pvtKey)))))
 
         const transferTransaction = new Transaction().add(
@@ -116,8 +115,7 @@ function CardSOL({ setError }) {
                 fromPubkey: new PublicKey(id),
                 toPubkey: new PublicKey(toRef.current.value),
                 lamports: Number(amtRef.current.value * LAMPORTS_PER_SOL),
-            }),
-        );
+            }),);
 
         const connection = new Connection(
             "https://api.devnet.solana.com",
@@ -126,7 +124,7 @@ function CardSOL({ setError }) {
 
         try {
             setLoading(true)
-            const sign = await sendAndConfirmTransaction(connection, transferTransaction, [
+const sign = await sendAndConfirmTransaction(connection, transferTransaction, [
                 fromKeypair,
             ]);
             console.log("signature : ", sign)
