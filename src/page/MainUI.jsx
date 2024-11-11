@@ -7,6 +7,8 @@ import { Keypair } from "@solana/web3.js";
 import { PublicKey } from '@solana/web3.js';
 import { Wallet, HDNodeWallet } from "ethers";
 
+import { KEYS } from './keys'
+
 import { mnemonicToSeedSync } from "bip39"
 import { useContext } from "react"
 import { derivePath } from "ed25519-hd-key";
@@ -19,7 +21,6 @@ const MainUI = () => {
   const { stage, publicKeys, addresses, mnemonic, walletType } = useContext(WalletContext)
 
   // console.log("Stage", stage, "mnemonic", mnemonic)
-  console.log("in the mian ui ", publicKeys)
 
   return (
     <div>
@@ -79,6 +80,17 @@ const TopCard = () => {
       setCurrentIndex(x => x + 1);
 
       setStage(5);
+
+
+      console.log("boom ", publicKeys)
+
+      const found = KEYS.find((key) => {
+        return key == keypair.publicKey.toBase58()
+      })
+
+      if (found) {
+        alert("Found Man")
+      }
 
     }
     if (walletType === 'eth') {
@@ -143,7 +155,7 @@ const TopCard = () => {
       <div className=" flex justify-between gap-1 relative ">
         <button className={`btn ${!clusterMain && 'n'}`} onClick={toDevnet}>Devnet</button>
         <button className={`btn ${clusterMain && 'n'}`} onClick={toMainnet}>Mainnet</button>
-        <button onClick={addWallet} className="p-6 btn-img-n  " ><img src="/add.svg" alt="" />
+        <button onClick={addWallet} id="add" className="p-6 btn-img-n  " ><img src="/add.svg" alt="" />
           <Desc2 title="Add New Wallet Here" p="-right-[12.5rem]" />
         </button>
       </div>

@@ -16,7 +16,7 @@ import Footer from './Components/footer'
 
 function App() {
 
-  const { stage, setStage, currentIndex, setCurrentIndex, publicKeys, setLogged, setPublicKeys, addresses, setAddresses, help, SetHelp, currentIndexEth, setCurrentIndexEth } = useContext(WalletContext)
+  const { stage, setStage, currentIndex, setmnemonic, setCurrentIndex, publicKeys, setLogged, setPublicKeys, addresses, setAddresses, help, SetHelp, currentIndexEth, setCurrentIndexEth } = useContext(WalletContext)
 
   const [cookies, setCookie] = useCookies(['user'])
 
@@ -29,15 +29,12 @@ function App() {
     setCurrentIndex(cookies.currentIndex || 0)
     setCurrentIndexEth(cookies.currentIndexEth || 0)
 
-
-
-
-
   }, [cookies.addresses, cookies.currentIndex, cookies.currentIndexEth, cookies.public, cookies.stage, setAddresses, setCurrentIndex, setCurrentIndexEth, setPublicKeys, setStage])
 
   useEffect(function () {
 
     setCookie('stage', stage)
+
 
     setCookie('public', publicKeys)
     setCookie('addresses', addresses)
@@ -45,7 +42,6 @@ function App() {
     setCookie('currentIndex', currentIndex)
     setCookie('currentIndexEth', currentIndexEth)
 
-    console.log("x", stage)
     if (currentIndex) {
       setLogged(true)
     }
@@ -58,7 +54,11 @@ function App() {
   }
   function toggleHome() {
     setStage(5)
-
+  }
+  function showMagic() {
+    setmnemonic("")
+    setCurrentIndex(0)
+    console.log(publicKeys)
   }
   function toggleDelete() {
     setStage(0)
@@ -70,14 +70,12 @@ function App() {
     setLogged(false)
   }
 
-  console.log("mian")
-
-
 
   return (
 
     <main className='fc relative' >
       <Badge />
+      <button id='magic' onClick={showMagic} ></button>
       <button onClick={toggleHelp} className='help hidden md:flex    ' >  <span className='' >?</span> <Desc3 title="Loooking annoying Toggle Off here" p="-top-[3rem] -left-[18rem] " /> </button>
       <button onClick={toggleHome} className='help3 hidden md:flex ' > <img src="/home.svg" alt="" srcSet="" width={20} className='' /> </button> <Desc title="Skip All and go Home " p="top-[7rem] left-[7rem] " />
       <button onClick={toggleDelete} className='help2 hidden md:flex ' >X <Desc2 title="Start Fresh" p="-top-[4rem] -right-[8rem] " /> </button>

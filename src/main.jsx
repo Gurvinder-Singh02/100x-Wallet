@@ -8,17 +8,17 @@ import { Wrap } from './Provider/Wrap'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import WalletDetail from './page/WalletDetail.jsx'
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
 
-    <Wrap>
-      <CookiesProvider>
-        <BrowserRouter>
-          <Routes >
-            <Route index element={<App />} />
-            <Route path="/:id" element={<WalletDetail />} />
-          </Routes>
-        </BrowserRouter>
-      </CookiesProvider>
-    </Wrap>
-  </StrictMode>,
+  <Wrap>
+    <CookiesProvider>
+      <BrowserRouter>
+        <Routes >
+          <Route index element={<App />} />
+          <Route path="/:id" element={<WalletDetail />} />
+        </Routes>
+      </BrowserRouter>
+    </CookiesProvider>
+  </Wrap>
+  // </StrictMode>,
 )

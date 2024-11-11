@@ -26,7 +26,7 @@ const Phrase = () => {
 
     function nextStage() {
 
-        console.log(currentIndex, currentIndexEth)
+        // console.log(currentIndex, currentIndexEth)
 
         if (walletType === 'sol') {
             const seed = mnemonicToSeedSync(mnemonic)
@@ -36,12 +36,12 @@ const Phrase = () => {
             const secret = nacl.sign.keyPair.fromSeed(dSeed).secretKey;
 
             const keypair = Keypair.fromSecretKey(secret);
-            console.log("Keypair", keypair.publicKey.toBase58())
+            // console.log("Keypair", keypair.publicKey.toBase58())
 
             setPublicKeys([{ pubKey: keypair.publicKey.toBase58(), pvtKey: keypair.secretKey }]);
-            console.log(keypair.publicKey.toBase58())
+            // console.log(keypair.publicKey.toBase58())
             setCurrentIndex(x => x + 1);
-            setStage(5)
+            setStage(5) 
         }
         if (walletType === 'eth') {
 
@@ -55,7 +55,7 @@ const Phrase = () => {
             const wallet = new Wallet(privateKey);
 
             setAddresses([wallet.address]);
-            console.log("eth", wallet.address)
+            // console.log("eth", wallet.address)
             setCurrentIndexEth(x => x + 1);
             setStage(5)
         }
